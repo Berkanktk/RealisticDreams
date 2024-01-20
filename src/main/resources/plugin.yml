@@ -1,0 +1,4 @@
+name: RealisticDreams
+version: '${project.version}'
+main: org.realisticdreams.RealisticDreams
+api-version: '1.20'
