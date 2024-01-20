@@ -1,47 +1,19 @@
 package org.realisticdreams;
 
-import org.bukkit.Material;
-import org.realisticdreams.quests.Quest;
-import org.realisticdreams.quests.QuestManager;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Map.Entry;
-import java.util.*;
+import org.realisticdreams.utility.TF;
+import org.realisticdreams.quests.QuestAssignmentHandler;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class DreamManager {
-    private Random random = new Random();
-
-    public void failQuest(Player player) {
-        UUID playerId = player.getUniqueId();
-        if (QuestManager.hasActiveQuest(playerId)) {
-            QuestManager.removeQuest(playerId);
-            player.sendMessage(redColor + boldText + "Your quest has failed as you went to sleep.");
-        }
-    }
-
-    private void assignAdventureQuest(Player player) {
-        Entry<Material, Integer> questItem = questItems.get(random.nextInt(questItems.size()));
-        Material item = questItem.getKey();
-        int quantity = questItem.getValue();
-
-        Quest adventureQuest = new Quest("Collect " + item.name(), player.getUniqueId(), item, quantity);
-        QuestManager.assignQuest(player.getUniqueId(), adventureQuest);
-
-        player.sendMessage("Your quest: Collect " + quantity + " " + item.name());
-    }
-
-    private final List<Entry<Material, Integer>> questItems = Arrays.asList(
-            new SimpleEntry<>(Material.IRON_INGOT, 10),
-            new SimpleEntry<>(Material.GOLD_INGOT, 5),
-            new SimpleEntry<>(Material.DIAMOND, 1),
-            new SimpleEntry<>(Material.COAL, 12),
-            new SimpleEntry<>(Material.OAK_LOG, 32),
-            new SimpleEntry<>(Material.BONE, 8),
-            new SimpleEntry<>(Material.COPPER_INGOT, 15)
-    );
+    private final Random random = new Random();
+    public final QuestAssignmentHandler questAssignmentHandler = new QuestAssignmentHandler();
 
     private final List<String> existentialQuotes = Arrays.asList(
             "To live is to experience. Without experience, one's life is meaningless.",
@@ -66,10 +38,6 @@ public class DreamManager {
             "In the depths of the mines, we discover not just resources, but insights."
     );
 
-    String redColor = "§c";
-    String greenColor = "§a";
-    String boldText = "§l";
-
     // Duration of potion effects is in ticks, 20 ticks = 1 second
     // https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
     public void applyDream(Player player) {
@@ -78,40 +46,40 @@ public class DreamManager {
         switch (dreamType) {
             case GOOD:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 1200, 1));
-                player.sendMessage(greenColor + "You have a pleasant dream.");
+                player.sendMessage(TF.format("You had a pleasant dream.", TF.GREEN));
                 break;
             case ADVENTUROUS:
-                assignAdventureQuest(player);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1200, 1));
-                player.sendMessage(greenColor + "You dream of grand adventures!");
+                player.sendMessage(TF.format("You dreamt of grand adventures!", TF.GREEN));
+                questAssignmentHandler.assignAdventureQuest(player);
                 break;
             case WEIRD:
-                player.sendMessage(redColor + "You have a bizarre and inexplicable dream!");
+                player.sendMessage(TF.format("You have a bizarre and inexplicable dream!", TF.RED));
                 break;
             case NIGHTMARE:
                 player.damage(4);
-                player.sendMessage(redColor + "You wake up from a terrible nightmare!");
+                player.sendMessage(TF.format("You wake up from a terrible nightmare!", TF.RED));
                 break;
             case EXISTENTIAL:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 300, 1));
-                player.sendMessage(greenColor + "You had an existential dream.");
-                player.sendMessage(existentialQuotes.get(random.nextInt(existentialQuotes.size())));
+                player.sendMessage(TF.format("You had an existential dream.", TF.GREEN));
+                player.sendMessage(TF.format(existentialQuotes.get(random.nextInt(existentialQuotes.size())), TF.GREEN, false, true));
                 break;
             case ROMANCE:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1200, 1));
-                player.sendMessage(greenColor + "You dream of a romantic encounter.");
+                player.sendMessage(TF.format("You dreamt of a romantic encounter.", TF.GREEN));
                 break;
             case FAMILY:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1200, 1));
-                player.sendMessage(greenColor + "You dream of your family.");
+                player.sendMessage(TF.format("You dreamt of your family.", TF.GREEN));
                 break;
             case SLEEP_DISORDER:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200, 1));
-                player.sendMessage(redColor + "You dream of not being able to sleep.");
+                player.sendMessage(TF.format("You dreamt of not being able to sleep.", TF.RED));
                 break;
             case FLYING:
                 player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 200, 1));
-                player.sendMessage(redColor + "You dreamt you were flying. You have wings! Or do you?");
+                player.sendMessage(TF.format("You dreamt you were flying. You have wings! Or do you?", TF.RED));
                 break;
         }
     }

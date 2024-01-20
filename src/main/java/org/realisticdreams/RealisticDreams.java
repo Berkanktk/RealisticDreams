@@ -1,5 +1,6 @@
 package org.realisticdreams;
 
+import org.realisticdreams.quests.QuestAssignmentHandler;
 import org.realisticdreams.quests.QuestCommandExecutor;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,7 +28,7 @@ public final class RealisticDreams extends JavaPlugin implements Listener {
     public void onPlayerSleep(PlayerBedEnterEvent event) {
         if (event.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK) {
             sleepTracker.getLastSleep(event.getPlayer());
-            dreamManager.failQuest(event.getPlayer());
+            dreamManager.questAssignmentHandler.failQuest(event.getPlayer());
         }
     }
 
