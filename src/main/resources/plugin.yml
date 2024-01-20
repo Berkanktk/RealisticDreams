@@ -2,3 +2,8 @@ name: RealisticDreams
 version: '${project.version}'
 main: org.realisticdreams.RealisticDreams
 api-version: '1.20'
+
+commands:
+  checkquest:
+    description: Check the status of your current quest
+    usage: /checkquest

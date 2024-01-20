@@ -1,13 +1,47 @@
 package org.realisticdreams;
 
+import org.bukkit.Material;
+import org.realisticdreams.quests.Quest;
+import org.realisticdreams.quests.QuestManager;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map.Entry;
 import java.util.*;
 
 public class DreamManager {
     private Random random = new Random();
+
+    public void failQuest(Player player) {
+        UUID playerId = player.getUniqueId();
+        if (QuestManager.hasActiveQuest(playerId)) {
+            QuestManager.removeQuest(playerId);
+            player.sendMessage(redColor + boldText + "Your quest has failed as you went to sleep.");
+        }
+    }
+
+    private void assignAdventureQuest(Player player) {
+        Entry<Material, Integer> questItem = questItems.get(random.nextInt(questItems.size()));
+        Material item = questItem.getKey();
+        int quantity = questItem.getValue();
+
+        Quest adventureQuest = new Quest("Collect " + item.name(), player.getUniqueId(), item, quantity);
+        QuestManager.assignQuest(player.getUniqueId(), adventureQuest);
+
+        player.sendMessage("Your quest: Collect " + quantity + " " + item.name());
+    }
+
+    private final List<Entry<Material, Integer>> questItems = Arrays.asList(
+            new SimpleEntry<>(Material.IRON_INGOT, 10),
+            new SimpleEntry<>(Material.GOLD_INGOT, 5),
+            new SimpleEntry<>(Material.DIAMOND, 1),
+            new SimpleEntry<>(Material.COAL, 12),
+            new SimpleEntry<>(Material.OAK_LOG, 32),
+            new SimpleEntry<>(Material.BONE, 8),
+            new SimpleEntry<>(Material.COPPER_INGOT, 15)
+    );
 
     private final List<String> existentialQuotes = Arrays.asList(
             "To live is to experience. Without experience, one's life is meaningless.",
@@ -34,6 +68,7 @@ public class DreamManager {
 
     String redColor = "§c";
     String greenColor = "§a";
+    String boldText = "§l";
 
     // Duration of potion effects is in ticks, 20 ticks = 1 second
     // https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
@@ -46,6 +81,7 @@ public class DreamManager {
                 player.sendMessage(greenColor + "You have a pleasant dream.");
                 break;
             case ADVENTUROUS:
+                assignAdventureQuest(player);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1200, 1));
                 player.sendMessage(greenColor + "You dream of grand adventures!");
                 break;
