@@ -10,9 +10,11 @@ import org.realisticdreams.utility.TF;
 import org.realisticdreams.quests.QuestAssignmentHandler;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class DreamManager {
+    private final RealisticDreams plugin;
     private final Random random = new Random();
     public final QuestAssignmentHandler questAssignmentHandler = new QuestAssignmentHandler();
     private RandomText randomText = new RandomText();
@@ -26,6 +28,38 @@ public class DreamManager {
     List<String> adventurousQuotes = quotesLoader.getQuotes("adventurousQuotes");
     List<String> flyingQuotes = quotesLoader.getQuotes("flyingQuotes");
     List<String> nightmareQuotes = quotesLoader.getQuotes("nightmareQuotes");
+
+    public DreamManager(RealisticDreams plugin) {
+        this.plugin = plugin;
+    }
+
+    private enum DURATION {
+        SHORT(300), // 15 seconds
+        MEDIUM(600), // 30 seconds
+        LONG(1200); // 1 minute
+        private final int ticks;
+
+        DURATION(int ticks) {
+            this.ticks = ticks;
+        }
+
+        public int getTicks() {
+            return ticks;
+        }
+    }
+
+    private enum INTENSITY {
+        LOW(1), MEDIUM(2), HIGH(3);
+        private final int level;
+
+        INTENSITY(int level) {
+            this.level = level;
+        }
+
+        public int getLevel() {
+            return level;
+        }
+    }
 
     // Duration of potion effects is in ticks, 20 ticks = 1 second
     // https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html

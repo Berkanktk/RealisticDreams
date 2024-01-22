@@ -1,0 +1,18 @@
+GOOD:
+  "You had a pleasant dream."
+ADVENTUROUS:
+  "You dreamt of great adventures!"
+WEIRD:
+  "You had an bizarre and inexplicable dream."
+NIGHTMARE:
+    "You woke up from a terrible nightmare!"
+EXISTENTIAL:
+    "You had an existential dream."
+ROMANCE:
+    "You dreamt of a romantic encounter."
+FAMILY:
+    "You dreamt of your family."
+SLEEP_DISORDER:
+    "You were not able to sleep."
+FLYING:
+    "You dreamt you were flying. You have wings! Or do you?"

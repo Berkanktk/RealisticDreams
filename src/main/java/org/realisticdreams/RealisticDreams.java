@@ -10,11 +10,16 @@ import org.bukkit.event.Listener;
 
 public final class RealisticDreams extends JavaPlugin implements Listener {
 
-    private DreamManager dreamManager = new DreamManager();
-    private SleepTracker sleepTracker = new SleepTracker();
+    private DreamManager dreamManager;
+    private SleepTracker sleepTracker;
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+
+        dreamManager = new DreamManager(this);
+        sleepTracker = new SleepTracker();
+
         this.getCommand("checkquest").setExecutor(new QuestCommandExecutor(dreamManager));
         getServer().getPluginManager().registerEvents(this, this);
     }
