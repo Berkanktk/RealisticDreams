@@ -7,3 +7,4 @@ commands:
   checkquest:
     description: Check the status of your current quest
     usage: /checkquest
+    aliases: [cq]
