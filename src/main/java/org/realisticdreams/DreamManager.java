@@ -63,52 +63,81 @@ public class DreamManager {
 
     // Duration of potion effects is in ticks, 20 ticks = 1 second
     // https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
-    public void applyDream(Player player) {
-        DreamType dreamType = DreamType.values()[random.nextInt(DreamType.values().length)];
+//    public void applyDream(Player player) {
+//        DreamType dreamType = DreamType.values()[random.nextInt(DreamType.values().length)];
+//
+//        switch (dreamType) {
+//            case GOOD:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 1200, 1));
+//                player.sendMessage(TF.format("You had a pleasant dream.", TF.GREEN));
+//                break;
+//            case ADVENTUROUS:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1200, 1));
+//                player.sendMessage(TF.format("You dreamt of great adventures!", TF.GREEN));
+//                player.sendMessage(randomText.getRandomText(adventurousQuotes, RandomText.DREAM.GOOD));
+//                questAssignmentHandler.assignAdventureQuest(player);
+//                break;
+//            case WEIRD:
+//                player.sendMessage(TF.format("You had an bizarre and inexplicable dream.", TF.RED));
+//                player.sendMessage(randomText.getRandomText(weirdQuotes, RandomText.DREAM.BAD));
+//                break;
+//            case NIGHTMARE:
+//                player.sendMessage(TF.format("You woke up from a terrible nightmare!", TF.RED));
+//                player.sendMessage(randomText.getRandomText(nightmareQuotes, RandomText.DREAM.BAD));
+//                break;
+//            case EXISTENTIAL:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 300, 1));
+//                player.sendMessage(TF.format("You had an existential dream.", TF.GREEN));
+//                player.sendMessage(randomText.getRandomText(existentialQuotes, RandomText.DREAM.GOOD));
+//                break;
+//            case ROMANCE:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1200, 1));
+//                player.sendMessage(TF.format("You dreamt of a romantic encounter.", TF.GREEN));
+//                player.sendMessage(randomText.getRandomText(romanceQuotes, RandomText.DREAM.GOOD));
+//                break;
+//            case FAMILY:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1200, 1));
+//                player.sendMessage(TF.format("You dreamt of your family.", TF.GREEN));
+//                player.sendMessage(randomText.getRandomText(familyQuotes, RandomText.DREAM.GOOD));
+//                break;
+//            case SLEEP_DISORDER:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200, 1));
+//                player.sendMessage(TF.format("You were not able to sleep.", TF.RED));
+//                player.sendMessage(randomText.getRandomText(sleepDisorderQuotes, RandomText.DREAM.BAD));
+//                break;
+//            case FLYING:
+//                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 200, 1));
+//                player.sendMessage(TF.format("You dreamt you were flying. You have wings! Or do you?", TF.RED));
+//                player.sendMessage(randomText.getRandomText(flyingQuotes, RandomText.DREAM.BAD));
+//                break;
+//        }
+//    }
 
+    private DreamConfig loadDreamConfig(DreamType dreamType) {
+        return new DreamConfig();
+    }
+
+    public void applyDream(Player player) {
+        DreamType dreamType = DreamType.values()[random.nextInt(DreamType.values().length)]; // Pick a random dream type
+        DreamConfig dreamConfig = loadDreamConfig(dreamType); // Load config for the dream type
+
+        applyPotionEffect(player, dreamConfig.getEffect(), dreamConfig.getDuration(), dreamConfig.getIntensity());
+        player.sendMessage(TF.format(dreamConfig.getMessage(), dreamConfig.getMessageType()));
+
+        handleSpecialDreams(player, dreamType, dreamConfig); // Handle any special cases for dream types
+    }
+
+    private void applyPotionEffect(Player player, PotionEffectType effectType, int durationTicks, int intensity) {
+        if (effectType != null) {
+            player.addPotionEffect(new PotionEffect(effectType, durationTicks, intensity));
+        }
+    }
+
+    private void handleSpecialDreams(Player player, DreamType dreamType, DreamConfig config) {
         switch (dreamType) {
-            case GOOD:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 1200, 1));
-                player.sendMessage(TF.format("You had a pleasant dream.", TF.GREEN));
-                break;
             case ADVENTUROUS:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1200, 1));
-                player.sendMessage(TF.format("You dreamt of great adventures!", TF.GREEN));
-                player.sendMessage(randomText.getRandomText(adventurousQuotes, RandomText.DREAM.GOOD));
+                player.sendMessage(randomText.getRandomText(config.getQuotes(), RandomText.DREAM.GOOD));
                 questAssignmentHandler.assignAdventureQuest(player);
-                break;
-            case WEIRD:
-                player.sendMessage(TF.format("You had an bizarre and inexplicable dream.", TF.RED));
-                player.sendMessage(randomText.getRandomText(weirdQuotes, RandomText.DREAM.BAD));
-                break;
-            case NIGHTMARE:
-                player.sendMessage(TF.format("You woke up from a terrible nightmare!", TF.RED));
-                player.sendMessage(randomText.getRandomText(nightmareQuotes, RandomText.DREAM.BAD));
-                break;
-            case EXISTENTIAL:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 300, 1));
-                player.sendMessage(TF.format("You had an existential dream.", TF.GREEN));
-                player.sendMessage(randomText.getRandomText(existentialQuotes, RandomText.DREAM.GOOD));
-                break;
-            case ROMANCE:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1200, 1));
-                player.sendMessage(TF.format("You dreamt of a romantic encounter.", TF.GREEN));
-                player.sendMessage(randomText.getRandomText(romanceQuotes, RandomText.DREAM.GOOD));
-                break;
-            case FAMILY:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1200, 1));
-                player.sendMessage(TF.format("You dreamt of your family.", TF.GREEN));
-                player.sendMessage(randomText.getRandomText(familyQuotes, RandomText.DREAM.GOOD));
-                break;
-            case SLEEP_DISORDER:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200, 1));
-                player.sendMessage(TF.format("You were not able to sleep.", TF.RED));
-                player.sendMessage(randomText.getRandomText(sleepDisorderQuotes, RandomText.DREAM.BAD));
-                break;
-            case FLYING:
-                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 200, 1));
-                player.sendMessage(TF.format("You dreamt you were flying. You have wings! Or do you?", TF.RED));
-                player.sendMessage(randomText.getRandomText(flyingQuotes, RandomText.DREAM.BAD));
                 break;
         }
     }
