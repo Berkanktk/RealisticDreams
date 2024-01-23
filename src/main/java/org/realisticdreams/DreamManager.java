@@ -1,5 +1,6 @@
 package org.realisticdreams;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -72,14 +73,15 @@ public class DreamManager {
         // Generating a random DreamType
         DreamType dreamType = DreamType.values()[random.nextInt(DreamType.values().length)];
         String path = "Dreams.Category." + dreamType.name();
+        FileConfiguration config = plugin.getConfig();
 
         // Retrieve the configuration for the dream type
-        String quotesGroup = plugin.getConfig().getString(path + ".QuotesGroup");
-        String message = plugin.getConfig().getString(path + ".Message");
-        String type = plugin.getConfig().getString(path + ".Type");
-        PotionEffectType effectType = PotionEffectType.getByName(Objects.requireNonNull(plugin.getConfig().getString(path + ".Effect")).toUpperCase());
-        DURATION duration = DURATION.valueOf(plugin.getConfig().getString(path + ".Duration").toUpperCase());
-        INTENSITY intensity = INTENSITY.valueOf(plugin.getConfig().getString(path + ".Intensity").toUpperCase());
+        String quotesGroup = config.getString(path + ".QuotesGroup");
+        String message = config.getString(path + ".Message");
+        String type = config.getString(path + ".Type");
+        PotionEffectType effectType = PotionEffectType.getByName(Objects.requireNonNull(config.getString(path + ".Effect")).toUpperCase());
+        DURATION duration = DURATION.valueOf(config.getString(path + ".Duration").toUpperCase());
+        INTENSITY intensity = INTENSITY.valueOf(config.getString(path + ".Intensity").toUpperCase());
 
         // Apply potion effect
         if (effectType != null) {
