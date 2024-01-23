@@ -10,7 +10,7 @@ Dreams:
       Intensity: LOW
     ADVENTUROUS:
       QuotesGroup: adventurousQuotes
-      Message: "You dreamt of grand adventures!"
+      Message: "You dreamt of great adventures!"
       Type: GOOD
       Effect: INCREASE_DAMAGE
       Duration: LONG
@@ -26,40 +26,40 @@ Dreams:
       QuotesGroup: nightmareQuotes
       Message: "You woke up from a terrible nightmare!"
       Type: BAD
-      Effect: WITHER
+      Effect: BLINDNESS
       Duration: SHORT
       Intensity: LOW
     EXISTENTIAL:
       QuotesGroup: existentialQuotes
       Message: "You had an existential dream."
       Type: GOOD
-      Effect: BLINDNESS
+      Effect: SPEED
       Duration: MEDIUM
       Intensity: LOW
     ROMANCE:
       QuotesGroup: romanceQuotes
-      Message: "You dreamt of a romantic encounter."
+      Message: "A dream of romantic enchantment filled your night."
       Type: GOOD
       Effect: REGENERATION
-      Duration: SHORT
+      Duration: MEDIUM
       Intensity: LOW
     FAMILY:
       QuotesGroup: familyQuotes
-      Message: "You dreamt of your family."
+      Message: "A heartwarming family dream warmed your soul."
       Type: GOOD
-      Effect: SATURATION
-      Duration: SHORT
+      Effect: DAMAGE_RESISTANCE
+      Duration: LONG
       Intensity: LOW
     SLEEP_DISORDER:
       QuotesGroup: sleepDisorderQuotes
       Message: "You were not able to sleep."
       Type: BAD
-      Effect: HUNGER
+      Effect: WITHER
       Duration: SHORT
       Intensity: LOW
     FLYING:
       QuotesGroup: flyingQuotes
-      Message: "You dreamt you were flying. You have wings! Or do you?"
+      Message: "You dreamt of soaring freely through the skies."
       Type: BAD
       Effect: LEVITATION
       Duration: SHORT
@@ -68,6 +68,16 @@ Dreams:
 Quotes:
   goodQuotes:
     - "Nothing better than a good night's sleep."
+    - "Awakened refreshed, ready to mine the day's possibilities."
+    - "Rested and renewed, like a creeper basking in the morning sun."
+    - "A night's rest, a day's treasure; energy to build anew."
+    - "Dreams cleared away like morning fog, revealing a day full of potential."
+    - "Slept like a log block, ready to face the day's adventure."
+    - "The peace of last night's rest shines brighter than a Redstone lamp."
+    - "Woke up feeling like I've respawned at a new day's beginning."
+    - "A restful sleep is the best tool in my inventory for today."
+    - "Emerging from sleep as rejuvenated as a player at sunrise."
+    - "After such a rest, even the creepers couldn't dampen my spirit."
   existentialQuotes:
     - "To live is to experience. Without experience, one's life is meaningless."
     - "The adventure of life is to learn. The purpose of life is to grow."
@@ -111,6 +121,7 @@ Quotes:
     - "In Minecraft as in life, family is the adventure that never ends."
     - "Every shared sunset in Minecraft fortifies the bonds of family."
     - "Building a world together, block by block, strengthens family ties."
+    - "In the realm of blocks, family is the bedrock of our lives."
   sleepDisorderQuotes:
     - "Tossing and turning, the bed feels like an endless mine."
     - "In the realm of sleep, restlessness casts a shadow."
@@ -123,16 +134,16 @@ Quotes:
     - "Like a broken compass, sleeplessness leads you in circles."
     - "The night's silence is broken by the echoes of wakefulness."
   weirdQuotes:
-    - "In a world of blocks, sometimes the strangest dreams are the most real."
-    - "Surreal visions in a pixelated world challenge reality."
-    - "Bizarre dreams - where chickens ride zombies and pigs fly."
-    - "In the land of oddities, every dream is a new surprise."
-    - "Minecraft's weird dreams - where the impossible becomes possible."
-    - "Strangeness in sleep, where creepers wear suits and sheep sing."
-    - "Dreams so weird, they could only exist in a world of blocks."
-    - "A bizarre journey through a land where biomes shift in an instant."
-    - "In the realm of the peculiar, every block holds a mystery."
-    - "Weirdness reigns in dreams where the sky is down and the ground is up."
+    - "Dreams where squids craft symphonies in the sky, and stars fall like snowflakes."
+    - "Night visions of a world where trees talk in riddles, and the moon plays hide-and-seek."
+    - "Slumber tales of rivers flowing with lava and fish that glow like torches."
+    - "Awakening from a dream where mountains walk and valleys whisper secrets."
+    - "Fantastical sleepscapes where every leaf tells a story, and the rain sings melodies."
+    - "Bizarre slumbers of a reverse world, where players dig for the sky and build to the depths."
+    - "Nocturnal adventures in lands where the sun is a cube of ice, and snowflakes burn."
+    - "Dreams so peculiar - bees the size of sheep, and flowers that hum with daylight."
+    - "Nightly journeys through a realm where shadows paint pictures and time flows backward."
+    - "Surreal sleep where the air is woven with colors and every step echoes in music."
   adventurousQuotes:
     - "Embark on a dream quest, where every block is a step towards glory."
     - "In dreams of adventure, face dragons and conquer kingdoms."
