@@ -4,7 +4,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import org.realisticdreams.utility.QuotesLoader;
 import org.realisticdreams.utility.RandomText;
 import org.realisticdreams.utility.TF;
 import org.realisticdreams.quests.QuestAssignmentHandler;
@@ -18,9 +17,6 @@ public class DreamManager {
     private final Random random = new Random();
     public final QuestAssignmentHandler questAssignmentHandler = new QuestAssignmentHandler();
     private RandomText randomText = new RandomText();
-    private QuotesLoader quotesLoader = new QuotesLoader();
-
-    List<String> existentialQuotes = quotesLoader.getQuotes("existentialQuotes");
 
     public DreamManager(RealisticDreams plugin) {
         this.plugin = plugin;
@@ -58,12 +54,12 @@ public class DreamManager {
         List<String> quotes = plugin.getConfig().getStringList("Quotes." + quotesGroup);
         if (!quotes.isEmpty()) {
             String selectedText = quotes.get(random.nextInt(quotes.size()));
-            return TF.format(selectedText, getDreamColor(type), false, true);
+            return TF.format(selectedText, evaluateType(type), false, true);
         }
         return "No quote found.";
     }
 
-    private String getDreamColor(String type) {
+    private String evaluateType(String type) {
         return "GOOD".equalsIgnoreCase(type) ? TF.GREEN : TF.RED;
     }
 
@@ -73,9 +69,8 @@ public class DreamManager {
             return;
         }
 
-        // Generate a random DreamType
+        // Generating a random DreamType
         DreamType dreamType = DreamType.values()[random.nextInt(DreamType.values().length)];
-        // Create the path to the dream configuration
         String path = "Dreams.Category." + dreamType.name();
 
         // Retrieve the configuration for the dream type
@@ -93,10 +88,8 @@ public class DreamManager {
             plugin.getLogger().warning("Invalid potion effect type for dream type: " + dreamType.name());
         }
 
-        // Send message
-        player.sendMessage(TF.format(message, getDreamColor(type)));
-
-        // Send quote
+        // Send nightly summary to player
+        player.sendMessage(TF.format(message, evaluateType(type)));
         player.sendMessage(getRandomQuote(quotesGroup, type));
 
         // Handle additional logic for specific dream types
