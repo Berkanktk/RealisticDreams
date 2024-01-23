@@ -1,6 +1,5 @@
 package org.realisticdreams;
 
-import org.realisticdreams.quests.QuestAssignmentHandler;
 import org.realisticdreams.quests.QuestCommandExecutor;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,7 +17,7 @@ public final class RealisticDreams extends JavaPlugin implements Listener {
         saveDefaultConfig();
 
         dreamManager = new DreamManager(this);
-        sleepTracker = new SleepTracker();
+        sleepTracker = new SleepTracker(this);
 
         this.getCommand("checkquest").setExecutor(new QuestCommandExecutor(dreamManager));
         getServer().getPluginManager().registerEvents(this, this);
