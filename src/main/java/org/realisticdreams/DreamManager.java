@@ -5,7 +5,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import org.realisticdreams.utility.RandomText;
 import org.realisticdreams.utility.TF;
 import org.realisticdreams.quests.QuestAssignmentHandler;
 
@@ -16,11 +15,11 @@ import java.util.Random;
 public class DreamManager {
     private final RealisticDreams plugin;
     private final Random random = new Random();
-    public final QuestAssignmentHandler questAssignmentHandler = new QuestAssignmentHandler();
-    private RandomText randomText = new RandomText();
+    public QuestAssignmentHandler questAssignmentHandler;
 
     public DreamManager(RealisticDreams plugin) {
         this.plugin = plugin;
+        this.questAssignmentHandler = new QuestAssignmentHandler(this.plugin);
     }
 
     private enum DURATION {

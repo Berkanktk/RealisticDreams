@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.realisticdreams.DreamManager;
+import org.realisticdreams.utility.TF;
 
 public class QuestCommandExecutor implements CommandExecutor {
     private final DreamManager dreamManager;
@@ -23,14 +24,14 @@ public class QuestCommandExecutor implements CommandExecutor {
                 if (quest != null && quest.getObjectiveItem() != null) {
                     if (player.getInventory().containsAtLeast(new ItemStack(quest.getObjectiveItem()), quest.getObjectiveAmount())) {
                         player.getInventory().removeItem(new ItemStack(quest.getObjectiveItem(), quest.getObjectiveAmount()));
-                        player.giveExp(150);
-                        player.sendMessage("Quest completed! You have been rewarded with experience points.");
+                        player.giveExp(quest.getExpReward());
+                        player.sendMessage(TF.format("Quest completed! You have been rewarded with " + quest.getExpReward() + " experience points.", TF.GREEN));
                         QuestManager.removeQuest(player.getUniqueId());
                     } else {
-                        player.sendMessage("You have not yet completed your quest.");
+                        player.sendMessage(TF.format("You do not have enough of the required item.", TF.RED));
                     }
                 } else {
-                    player.sendMessage("You don't have any active quests.");
+                    player.sendMessage(TF.format("You do not have an active quest.", TF.RED));
                 }
                 return true;
             }
