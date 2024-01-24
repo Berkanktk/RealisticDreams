@@ -196,54 +196,64 @@ Quotes:
 Quests:
   Adventure:
     The Iron Quest:
+      Name: "The Iron Quest"
       Material: IRON_INGOT
       Amount: 10
       Description: "Collect 10 iron ingots."
       EXP-Reward: 150
     The Gold Quest:
+      Name: "The Gold Quest"
       Material: GOLD_INGOT
       Amount: 5
       Description: "Collect 5 gold ingots."
       EXP-Reward: 150
     The Diamond Quest:
+      Name: "The Diamond Quest"
       Material: DIAMOND
       Amount: 1
       Description: "Collect 1 diamond."
       EXP-Reward: 175
     The Coal Quest:
+      Name: "The Coal Quest"
       Material: COAL
       Amount: 12
       Description: "Collect 12 coal."
       EXP-Reward: 150
     The Oak Quest:
+      Name: "The Oak Quest"
       Material: OAK_LOG
       Amount: 32
       Description: "Collect 32 logs."
       EXP-Reward: 150
     The Bone Quest:
+      Name: "The Bone Quest"
       Material: BONE
       Amount: 8
       Description: "Collect 8 bones."
       EXP-Reward: 160
     The Copper Quest:
+      Name: "The Copper Quest"
       Material: COPPER_INGOT
       Amount: 15
       Description: "Collect 15 copper ingots."
       EXP-Reward: 160
     The Cobblestone Quest:
+      Name: "The Cobblestone Quest"
       Material: COBBLESTONE
       Amount: 64
       Description: "Collect 64 cobblestone."
       EXP-Reward: 150
     The Spider Eye Quest:
+      Name: "The Spider Eye Quest"
       Material: SPIDER_EYE
       Amount: 4
-      Message: "Collect 4 spider eyes."
+      Description: "Collect 4 spider eyes."
       EXP-Reward: 160
     The Creeper Quest:
+      Name: "The Creeper Quest"
       Material: GUNPOWDER
       Amount: 8
-      Message: "Collect 8 gunpowder."
+      Description: "Collect 8 gunpowder."
       EXP-Reward: 160
     # Other quests and rewards can be added here.
   # Adding other categories with quests will NOT work.
