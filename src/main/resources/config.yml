@@ -223,7 +223,7 @@ Quests:
       Name: "The Oak Quest"
       Material: OAK_LOG
       Amount: 32
-      Description: "Collect 32 logs."
+      Description: "Collect 32 oak logs."
       EXP-Reward: 150
     The Bone Quest:
       Name: "The Bone Quest"
