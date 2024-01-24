@@ -32,6 +32,8 @@ public final class RealisticDreams extends JavaPlugin implements Listener {
     public void onPlayerSleep(PlayerBedEnterEvent event) {
         if (event.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK) {
             sleepTracker.getLastSleep(event.getPlayer());
+
+            // If the player has an active quest, fail it
             dreamManager.questAssignmentHandler.failQuest(event.getPlayer());
         }
     }

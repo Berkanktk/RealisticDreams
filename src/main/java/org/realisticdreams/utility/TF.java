@@ -6,6 +6,7 @@ public class TF {
 
     public static final String RED = "§c";
     public static final String GREEN = "§a";
+    public static final String DARK_PURPLE = "§5";
     public static final String BOLD = "§l";
     public static final String ITALIC = "§o";
 

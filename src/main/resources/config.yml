@@ -1,4 +1,8 @@
 # config.yml
+
+# Adding additional dream types:
+# 1) If you are adding additional dream types, then remember to give them a quotesGroup.
+# 2) Then add the quotesGroup to the quotes section with quotes.
 Dreams:
   Category:
     GOOD:
@@ -64,6 +68,7 @@ Dreams:
       Effect: LEVITATION
       Duration: SHORT
       Intensity: LOW
+    # Other dream types can be added here.
 
 Quotes:
   goodQuotes:
@@ -78,6 +83,7 @@ Quotes:
     - "A restful sleep is the best tool in my inventory for today."
     - "Emerging from sleep as rejuvenated as a player at sunrise."
     - "After such a rest, even the creepers couldn't dampen my spirit."
+    # Add more quotes here.
   existentialQuotes:
     - "To live is to experience. Without experience, one's life is meaningless."
     - "The adventure of life is to learn. The purpose of life is to grow."
@@ -99,6 +105,7 @@ Quotes:
     - "The world is but a canvas to our imagination."
     - "Dreams shape the world; keep dreaming, keep building."
     - "In the depths of the mines, we discover not just resources, but insights."
+    # Add more quotes here.
   romanceQuotes:
     - "Love is the greatest adventure in Minecraft and life."
     - "In every block, there's a heartbeat waiting to sync with yours."
@@ -110,6 +117,7 @@ Quotes:
     - "Find your heart's quest in the vast world of blocks and dreams."
     - "Love, like redstone, is complex yet powerful."
     - "Together, we can build more than just structures; we build memories."
+    # Add more quotes here.
   familyQuotes:
     - "Family is the stronghold that always stands firm in your Minecraft world."
     - "In the heart of every home block, family's warmth resides."
@@ -122,6 +130,7 @@ Quotes:
     - "Every shared sunset in Minecraft fortifies the bonds of family."
     - "Building a world together, block by block, strengthens family ties."
     - "In the realm of blocks, family is the bedrock of our lives."
+    # Add more quotes here.
   sleepDisorderQuotes:
     - "Tossing and turning, the bed feels like an endless mine."
     - "In the realm of sleep, restlessness casts a shadow."
@@ -133,6 +142,7 @@ Quotes:
     - "Insomnia in Minecraft, where the night never seems to end."
     - "Like a broken compass, sleeplessness leads you in circles."
     - "The night's silence is broken by the echoes of wakefulness."
+    # Add more quotes here.
   weirdQuotes:
     - "Dreams where squids craft symphonies in the sky, and stars fall like snowflakes."
     - "Night visions of a world where trees talk in riddles, and the moon plays hide-and-seek."
@@ -144,6 +154,7 @@ Quotes:
     - "Dreams so peculiar - bees the size of sheep, and flowers that hum with daylight."
     - "Nightly journeys through a realm where shadows paint pictures and time flows backward."
     - "Surreal sleep where the air is woven with colors and every step echoes in music."
+    # Add more quotes here.
   adventurousQuotes:
     - "Embark on a dream quest, where every block is a step towards glory."
     - "In dreams of adventure, face dragons and conquer kingdoms."
@@ -155,6 +166,7 @@ Quotes:
     - "Set sail on dream seas, where new worlds await beyond the horizon."
     - "In the land of adventure, the stars guide you to distant realms."
     - "Face the trials of the night, and emerge as a Minecraft champion."
+    # Add more quotes here.
   flyingQuotes:
     - "Soar above the clouds, where the sky is your endless playground."
     - "In dreams of flight, the world below looks entirely new."
@@ -166,6 +178,7 @@ Quotes:
     - "Feel the rush of wind, as you navigate through the clouds like a bird."
     - "Elevate above the mundane, where the horizon stretches into infinity."
     - "In flight, the world is yours to explore, from the highest peak to the distant horizon."
+    # Add more quotes here.
   nightmareQuotes:
     - "In the realm of nightmares, shadows whisper secrets best left untold."
     - "Where fear reigns, every step echoes in the corridors of the unknown."
@@ -177,6 +190,73 @@ Quotes:
     - "Haunted by unseen horrors, where each breath could be your last."
     - "In the grip of the nightmare, even the bravest hearts quiver in fear."
     - "Where light ends, nightmares begin, weaving tales of terror and despair."
+    # Add more quotes here.
+  # Other quotes groups can be added here.
+
+Quests:
+  Adventure:
+    The Iron Quest:
+      Name: "The Iron Quest"
+      Material: IRON_INGOT
+      Amount: 10
+      Description: "Collect 10 iron ingots."
+      EXP-Reward: 150
+    The Gold Quest:
+      Name: "The Gold Quest"
+      Material: GOLD_INGOT
+      Amount: 5
+      Description: "Collect 5 gold ingots."
+      EXP-Reward: 150
+    The Diamond Quest:
+      Name: "The Diamond Quest"
+      Material: DIAMOND
+      Amount: 1
+      Description: "Collect 1 diamond."
+      EXP-Reward: 175
+    The Coal Quest:
+      Name: "The Coal Quest"
+      Material: COAL
+      Amount: 12
+      Description: "Collect 12 coal."
+      EXP-Reward: 150
+    The Oak Quest:
+      Name: "The Oak Quest"
+      Material: OAK_LOG
+      Amount: 32
+      Description: "Collect 32 oak logs."
+      EXP-Reward: 150
+    The Bone Quest:
+      Name: "The Bone Quest"
+      Material: BONE
+      Amount: 8
+      Description: "Collect 8 bones."
+      EXP-Reward: 160
+    The Copper Quest:
+      Name: "The Copper Quest"
+      Material: COPPER_INGOT
+      Amount: 15
+      Description: "Collect 15 copper ingots."
+      EXP-Reward: 160
+    The Cobblestone Quest:
+      Name: "The Cobblestone Quest"
+      Material: COBBLESTONE
+      Amount: 64
+      Description: "Collect 64 cobblestone."
+      EXP-Reward: 150
+    The Spider Eye Quest:
+      Name: "The Spider Eye Quest"
+      Material: SPIDER_EYE
+      Amount: 4
+      Description: "Collect 4 spider eyes."
+      EXP-Reward: 160
+    The Creeper Quest:
+      Name: "The Creeper Quest"
+      Material: GUNPOWDER
+      Amount: 8
+      Description: "Collect 8 gunpowder."
+      EXP-Reward: 160
+    # Other quests and rewards can be added here.
+  # Adding other categories with quests will NOT work.
 
 # Settings
 Sleep Tracker: True
