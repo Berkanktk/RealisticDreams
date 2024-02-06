@@ -23,6 +23,7 @@ public class DreamManager {
     }
 
     private enum DURATION {
+        QUICK(20), // 1 second
         SHORT(200), // 10 seconds
         MEDIUM(400), // 20 seconds
         LONG(1200); // 1 minute

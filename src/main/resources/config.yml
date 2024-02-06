@@ -58,15 +58,15 @@ Dreams:
       QuotesGroup: sleepDisorderQuotes
       Message: "You were not able to sleep."
       Type: BAD
-      Effect: WITHER
-      Duration: SHORT
+      Effect: MINING_FATIGUE
+      Duration: MEDIUM
       Intensity: LOW
     FLYING:
       QuotesGroup: flyingQuotes
       Message: "You dreamt of soaring freely through the skies."
       Type: BAD
       Effect: LEVITATION
-      Duration: SHORT
+      Duration: QUICK
       Intensity: LOW
     # Other dream types can be added here.
 
