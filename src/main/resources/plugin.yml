@@ -1,3 +1,4 @@
+author: Berkanktk
 name: RealisticDreams
 version: '${project.version}'
 main: org.realisticdreams.RealisticDreams
@@ -8,7 +9,18 @@ commands:
     description: Check the status of your current quest
     usage: /checkquest
     aliases: [cq]
+    permission: realisticdreams.checkquest
+    permission-message: You do not have permission to use this command
   lastslept:
     description: Check when you last slept
     usage: /lastslept
     aliases: [ls]
+    permission: realisticdreams.lastslept
+    permission-message: You do not have permission to use this command
+permissions:
+    realisticdreams.checkquest:
+        description: Allows the player to check their current quest
+        default: true
+    realisticdreams.lastslept:
+        description: Allows the player to check when they last slept
+        default: true
