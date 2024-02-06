@@ -55,7 +55,7 @@ public class DreamManager {
         List<String> quotes = plugin.getConfig().getStringList("Quotes." + quotesGroup);
         if (!quotes.isEmpty()) {
             String selectedText = quotes.get(random.nextInt(quotes.size()));
-            return TF.format(selectedText, evaluateType(type), false, true);
+            return TF.format("\"" + selectedText + "\"", evaluateType(type), false, true);
         }
         return "No quote found.";
     }
