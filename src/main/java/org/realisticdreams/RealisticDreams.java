@@ -9,10 +9,14 @@ import org.bukkit.event.Listener;
 import org.realisticdreams.sleep.SleepTracker;
 import org.realisticdreams.sleep.SleepTrackerCommandExecutor;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public final class RealisticDreams extends JavaPlugin implements Listener {
 
     private DreamManager dreamManager;
     private SleepTracker sleepTracker;
+    private HashMap<UUID, Long> sleepStartTimes = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -34,15 +38,22 @@ public final class RealisticDreams extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerSleep(PlayerBedEnterEvent event) {
         if (event.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK) {
-            sleepTracker.registerSleep(event.getPlayer());
-
-            // If the player has an active quest, fail it
-            dreamManager.questAssignmentHandler.failQuest(event.getPlayer());
+            sleepStartTimes.put(event.getPlayer().getUniqueId(), System.currentTimeMillis());
         }
     }
 
     @EventHandler
     public void onPlayerWake(PlayerBedLeaveEvent event) {
-        dreamManager.applyDream(event.getPlayer());
+        UUID playerId = event.getPlayer().getUniqueId();
+        if (sleepStartTimes.containsKey(playerId)) {
+            long sleepDuration = System.currentTimeMillis() - sleepStartTimes.get(playerId);
+            if (sleepDuration >= 5050) {
+                sleepTracker.registerSleep(event.getPlayer());
+                dreamManager.questAssignmentHandler.failQuest(event.getPlayer());
+                dreamManager.applyDream(event.getPlayer());
+            }
+
+            sleepStartTimes.remove(playerId);
+        }
     }
 }
