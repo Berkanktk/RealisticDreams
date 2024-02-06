@@ -47,7 +47,7 @@ public final class RealisticDreams extends JavaPlugin implements Listener {
         UUID playerId = event.getPlayer().getUniqueId();
         if (sleepStartTimes.containsKey(playerId)) {
             long sleepDuration = System.currentTimeMillis() - sleepStartTimes.get(playerId);
-            if (sleepDuration >= 5050) {
+            if (sleepDuration >= 5000) {
                 sleepTracker.registerSleep(event.getPlayer());
                 dreamManager.questAssignmentHandler.failQuest(event.getPlayer());
                 dreamManager.applyDream(event.getPlayer());
