@@ -65,7 +65,7 @@ If you encounter any issues or have suggestions for improving RealisticDreams, f
 Enjoy your journey through the world of dreams with RealisticDreams!
 
 ## Screenshots
- ![Romantic](/RealisticDreams/public/Romantic.png)
- ![Existential](/RealisticDreams/public/Existential.png)
- ![Nightmare](/RealisticDreams/public/Nightmare.png)
- ![Quest](/RealisticDreams/public/Quest.png)
+ ![Romantic](/public/Romantic.png)
+ ![Existential](/public/Existential.png)
+ ![Nightmare](/public/Nightmare.png)
+ ![Quest](/public/Quest.png)
