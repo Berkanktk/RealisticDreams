@@ -1,6 +1,8 @@
 # RealisticDreams
  **RealisticDreams** is an immersive Minecraft plugin that changes the sleeping experience. Players can embark on dreamy adventures, face nightmares, and even earn positive/negative buffs based on their dreams. Start your day with one of over 100 motivational quotes randomly selected based on 9 distinct types of dreams. Additionally, players can engage in daily quests for adventurous dreams, earning extra experience points along the way. Get ready to explore the realm of dreams like never before!
 
+ Find the plugin on [SpigotMC](https://www.spigotmc.org/resources/realisticdreams.114992/).
+
 ## Functionality
 
 - **Dreaming Mechanics**: When sleeping in the game, players can experience various types of dreams, including good dreams, adventurous dreams, weird dreams, nightmares, existential dreams, romantic dreams, family dreams, dreams related to sleep disorders, or dreams of flying.  Each dream type affects your character in unique ways when you wake up.
